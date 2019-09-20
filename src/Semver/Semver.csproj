@@ -1,26 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Acklann.Semver</AssemblyName>
     <RootNamespace>Acklann.Semver</RootNamespace>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <Company>Ackara</Company>
-    <PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
+	
+  <PropertyGroup Label="Package">
+    <PackageVersion>0.0.3</PackageVersion>
+    <AssemblyVersion>0.0.3</AssemblyVersion>
+
+		<Company>Ackara</Company>
     <Authors>Ackara</Authors>
+    <Copyright>Ackara Copyright 2019</Copyright>
+
+		<PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
     <PackageTags>semantic version</PackageTags>
   </PropertyGroup>
-  <PropertyGroup>
-    <Copyright>Ackara Copyright 2019</Copyright>
-    <AssemblyVersion>0.0.3</AssemblyVersion>
-    <PackageVersion>0.0.3</PackageVersion>
-  </PropertyGroup>
+	
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="System.Memory" Version="4.5.3" />
   </ItemGroup>
 </Project>
