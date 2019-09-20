@@ -1,0 +1,21 @@
+﻿{
+    "name":  null,
+    "author":  null,
+    "company":  null,
+    "copyright":  "Copyright 2019",
+    "website":  null,
+    "repository":  null,
+    "icon":  null,
+    "tags":  null,
+    "license":  null,
+    "releaseNotes":  null,
+    "version":  {
+                    "major":  0,
+                    "minor":  0,
+                    "patch":  2
+                },
+    "branchSuffixMap":  {
+                            "master":  "",
+                            "*":  "beta"
+                        }
+}
