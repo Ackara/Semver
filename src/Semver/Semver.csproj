@@ -6,9 +6,16 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <Copyright>Copyright 2019</Copyright>
-    <AssemblyVersion>0.0.2</AssemblyVersion>
-    <PackageVersion>0.0.2</PackageVersion>
+    <Company>Ackara</Company>
+    <PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
+    <Authors>Ackara</Authors>
+    <PackageTags>semantic version</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Copyright>Ackara Copyright 2019</Copyright>
+    <AssemblyVersion>0.0.3</AssemblyVersion>
+    <PackageVersion>0.0.3</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>

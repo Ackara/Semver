@@ -1,18 +1,18 @@
 ﻿{
-    "name":  null,
-    "author":  null,
-    "company":  null,
-    "copyright":  "Copyright 2019",
-    "website":  null,
-    "repository":  null,
-    "icon":  null,
-    "tags":  null,
+    "name":  "Semver",
+    "author":  "Ackara",
+    "company":  "Ackara",
+    "copyright":  "Ackara Copyright 2019",
+    "website":  "https://github.com/Ackara/Semver",
+    "repository":  "https://github.com/Ackara/Semver.git",
+    "icon":  "",
+    "tags":  "semantic version",
     "license":  null,
     "releaseNotes":  null,
     "version":  {
                     "major":  0,
                     "minor":  0,
-                    "patch":  2
+                    "patch":  3
                 },
     "branchSuffixMap":  {
                             "master":  "",
