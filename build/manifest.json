@@ -3,17 +3,17 @@
     "description":  "A comprehensive implementation of Semantic Version (https://semver.org/).",
     "author":  "Ackara",
     "company":  "Ackara",
-    "copyright":  "Ackara Copyright 2019",
+    "copyright":  "Copyright Ackara 2019",
     "license":  null,
     "website":  "https://github.com/Ackara/Semver",
     "repository":  "https://github.com/Ackara/Semver.git",
-    "icon":  "https://raw.githubusercontent.com/Ackara/Semver/master/art/semver.svg",
+    "icon":  "https://raw.githubusercontent.com/Ackara/Semver/master/art/semver.png",
     "tags":  "semantic version",
     "releaseNotes":  null,
     "version":  {
                     "major":  0,
                     "minor":  0,
-                    "patch":  5
+                    "patch":  6
                 },
     "branchSuffixMap":  {
                             "master":  "",
