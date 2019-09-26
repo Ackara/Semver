@@ -6,8 +6,8 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Label="Package">
-    <PackageVersion>0.0.7</PackageVersion>
-    <AssemblyVersion>0.0.7</AssemblyVersion>
+    <PackageVersion>0.0.8</PackageVersion>
+    <AssemblyVersion>0.0.8</AssemblyVersion>
     <Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
     <Company>Ackara</Company>
     <Authors>Ackara</Authors>
