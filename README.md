@@ -39,7 +39,7 @@ ver.ToString("x.y.z-p+YYMMddHHmm"); // returns:  1.2.3.beta+1908280823
 
 | Specifier | Description | Example |
 |-----------|-------------|---------|
-| G | The standard string format | 1.2.3-beta-456 |
+| G | The standard string format | 1.2.3-beta+456 |
 | g | The standard format without build | 1.2.3-beta |
 | C | The standard format without pre-release and build | 1.2.3 |
 | x | The *major* number | 1 |
@@ -47,7 +47,7 @@ ver.ToString("x.y.z-p+YYMMddHHmm"); // returns:  1.2.3.beta+1908280823
 | z | The *patch* number | 3 |
 | p | The *pre-release* number | beta |
 | b | The *build* number | 456 |
-| \ | Chracter escape |  |
+| \ | Character escape |  |
 
 ---
 
