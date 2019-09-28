@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Acklann.Semver
 {
@@ -14,8 +15,19 @@ namespace Acklann.Semver
 			if (arg is SemanticVersion ver)
 			{
 				char c;
+				string seq;
 				int n = format.Length;
 				var builder = new System.Text.StringBuilder();
+
+				DateTime now = DateTime.UtcNow;
+				IEnumerable<char> getSequence(int startIdx)
+				{
+					for (int a = startIdx; a < n; a++)
+						if (format[a] == c)
+						{
+							yield return format[a];
+						}
+				}
 
 				for (int i = 0; i < n; i++)
 				{
@@ -35,6 +47,27 @@ namespace Acklann.Semver
 						case 'g':
 							builder.Append(ver.Major).Append('.').Append(ver.Minor).Append('.').Append(ver.Patch);
 							if (!string.IsNullOrEmpty(ver.PreRelease)) builder.Append('-').Append(ver.PreRelease);
+							break;
+
+						case 'Y':
+							seq = string.Concat(getSequence(i));
+							builder.Append(now.ToString(seq.ToLowerInvariant()));
+							i += (seq.Length - 1);
+							break;
+
+						case 'T': builder.Append(now.Ticks); break;
+
+						case 'M':
+						case 'm':
+						case 'D':
+						case 'd':
+						case 'H':
+						case 'h':
+						case 's':
+						case 'f':
+							seq = string.Concat(getSequence(i));
+							builder.Append(now.ToString(seq));
+							i += (seq.Length - 1);
 							break;
 
 						case '\\': /* Escape */

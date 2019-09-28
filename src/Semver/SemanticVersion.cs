@@ -5,7 +5,7 @@ namespace Acklann.Semver
 	/// <summary>
 	/// Represents a semantic version number as specified at https://semver.org/.
 	/// </summary>
-	public struct SemanticVersion : IEquatable<SemanticVersion>, IComparable<SemanticVersion>, IFormattable
+	public readonly struct SemanticVersion : IEquatable<SemanticVersion>, IComparable<SemanticVersion>, IFormattable
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SemanticVersion" /> struct.
@@ -497,6 +497,26 @@ namespace Acklann.Semver
 		/// <param name="obj">The object.</param>
 		/// <returns>The result of the conversion.</returns>
 		public static implicit operator string(SemanticVersion obj) => obj.ToString();
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SemanticVersion" /> to <see cref="Version" />.
+		/// </summary>
+		/// <param name="version">The version.</param>
+		/// <returns>The result of the conversion.</returns>
+		public static explicit operator Version(SemanticVersion version)
+		{
+			return new Version(version.Major, version.Minor, version.Patch);
+		}
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="Version" /> to <see cref="SemanticVersion" />.
+		/// </summary>
+		/// <param name="version">The version.</param>
+		/// <returns>The result of the conversion.</returns>
+		public static explicit operator SemanticVersion(Version version)
+		{
+			return new SemanticVersion(version.Major, version.Minor, version.Build, null, version.Revision.ToString());
+		}
 
 		#endregion Operators
 
