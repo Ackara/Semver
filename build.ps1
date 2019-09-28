@@ -39,6 +39,7 @@ if (-not ((&git --version) -match 'git version \d+\.\d+')) { throw "'git' is not
 
 # Initializing required variables.
 $Configuration = "Debug";
+if (($Tasks.Length -gt 0) -and ($Tasks[0] -like "publish")) { $Configuration = "Release"; }
 if ($Release) { $Configuration = "Release"; }
 
 $SecretsFilePath = (Join-Path $PSScriptRoot "secrets.json");

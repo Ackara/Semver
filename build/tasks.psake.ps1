@@ -26,7 +26,7 @@ Properties {
 
 Task "Default" -depends @("configure", "compile", "test", "pack");
 
-Task "Deploy" -alias "publish" -description "This task compiles, test then publish all packages to their respective destination." `
+Task "Publish" -description "This task compiles, test then publish all packages to their respective destination." `
 -depends @("configure", "clean", "version", "compile", "test", "pack", "push-nuget", "tag");
 
 # ======================================================================
