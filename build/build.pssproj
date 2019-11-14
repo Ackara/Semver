@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="manifest.json" />
+    <Content Include="manifest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

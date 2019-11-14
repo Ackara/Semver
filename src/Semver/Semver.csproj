@@ -1,26 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Acklann.Semver</AssemblyName>
-    <RootNamespace>Acklann.Semver</RootNamespace>
-    <LangVersion>7.2</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Label="Package">
-    <PackageVersion>0.0.8</PackageVersion>
-    <AssemblyVersion>0.0.8</AssemblyVersion>
-    <Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
-    <Company>Ackara</Company>
-    <Authors>Ackara</Authors>
-    <Copyright>Copyright Ackara 2019</Copyright>
-    <PackageIconUrl>https://raw.githubusercontent.com/Ackara/Semver/master/art/semver.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
-    <PackageTags>semantic version</PackageTags>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.3" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>Semver</AssemblyName>
+		<RootNamespace>Acklann.Semver</RootNamespace>
+		<LangVersion>7.2</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Package">
+		<Title>SemverX</Title>
+		<Version>0.0.11-beta</Version>
+		<AssemblyVersion>0.0.11</AssemblyVersion>
+		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
+		<PackageTags>semantic version</PackageTags>
+
+		<Company>Ackara</Company>
+		<Authors>Ackara</Authors>
+		<Copyright>Copyright 2019 , All Rights Reserved.</Copyright>
+
+		<PackageReleaseNotes>https://github.com//SemverX/blob/master/release-notes.md</PackageReleaseNotes>
+		<PackageIconUrl>https://raw.githubusercontent.com//SemverX/master/art/icon.png</PackageIconUrl>
+		<PackageLicenseFile>https://github.com//SemverX/blob/master/license.txt</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com//SemverX</PackageProjectUrl>
+		<RepositoryUrl>https://github.com//SemverX.git</RepositoryUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Memory" Version="4.5.3" />
+	</ItemGroup>
 </Project>

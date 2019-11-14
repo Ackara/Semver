@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace Acklann.Semver
 {
@@ -81,6 +82,7 @@ namespace Acklann.Semver
 		/// Gets a value indicating whether this instance is a pre-release.
 		/// </summary>
 		/// <value><c>true</c> if this instance is a pre-release; otherwise, <c>false</c>.</value>
+		[IgnoreDataMember]
 		public bool IsPreRelease
 		{
 			get => string.IsNullOrEmpty(_preRelease) == false;
@@ -90,6 +92,7 @@ namespace Acklann.Semver
 		/// Gets a value indicating whether this instance is stable.
 		/// </summary>
 		/// <value><c>true</c> if this instance is stable; otherwise, <c>false</c>.</value>
+		[IgnoreDataMember]
 		public bool IsStable
 		{
 			get => (_major > 0 && IsPreRelease == false);

@@ -461,7 +461,7 @@ function Remove-GeneratedProjectItem
 	)
 	PROCESS
 	{
-		$itemsToBeRemoved =  (@("bin", "obj", "node_modules") + $AdditionalItems) | Select-Object -Unique;
+		$itemsToBeRemoved =  (@("bin", "obj", "node_modules", "TestResults", "package-lock.json") + $AdditionalItems) | Select-Object -Unique;
 		foreach ($target in $itemsToBeRemoved)
 		{
 			$itemPath = Join-Path $ProjectFile.DirectoryName $target;
@@ -554,7 +554,47 @@ function Write-FormatedMessage
 	}
 }
 
+function Out-StringFormat
+{
+	Param(
+		[Parameter(Mandatory)]
+		[ValidateNotNullOrEmpty()]
+		[string]$FormatString,
+
+		[Parameter(ValueFromPipeline)]
+		$InputObject,
+
+		$Arg1, $Arg2,
+
+		[System.ConsoleColor]$ForegroundColor = [System.ConsoleColor]::Gray
+	)
+
+	PROCESS
+	{
+		if ($InputObject)
+		{
+			$value = $InputObject;
+			if ($InputObject | Get-Member "Name") { $value = $InputObject.Name; }
+			return ([string]::Format($FormatString, @($value, $Arg1, $Arg2)));
+		}
+	}
+}
+
 function Write-Header
+{
+	Param([string]$Title = "", [int]$length = 70, [switch]$ReturnAsString)
+
+	$header = [string]::Join('', [System.Linq.Enumerable]::Repeat('-', $length));
+	if (-not [String]::IsNullOrEmpty($Title))
+	{
+		$header = $header.Insert(4, " $Title ");
+		if ($header.Length -gt $length) { $header = $header.Substring(0, $length); }
+	}
+
+	if ($ReturnAsString) { return $header; } else { Write-Host ''; Write-Host $header -ForegroundColor DarkGray; Write-Host ''; }
+}
+
+function Out-HeaderString
 {
 	Param([string]$Title = "", [int]$length = 70, [switch]$ReturnAsString)
 

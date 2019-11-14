@@ -26,8 +26,8 @@ Properties {
 
 Task "Default" -depends @("configure", "compile", "test", "pack");
 
-Task "Publish" -description "This task compiles, test then publish all packages to their respective destination." `
--depends @("configure", "clean", "version", "compile", "test", "pack", "push-nuget", "tag");
+Task "Publish" -depends @("clean", "version", "compile", "test", "pack", "push-nuget", "tag") `
+-description "This task compiles, test then publish all packages to their respective destination.";
 
 # ======================================================================
 
@@ -65,12 +65,11 @@ Task "Package-Solution" -alias "pack" -description "This task generates all depl
 Task "Clean" -description "This task removes all generated files and folders from the solution." `
 -action {
 	Join-Path $SolutionFolder "*.sln" | Get-Item | Remove-GeneratedProjectItem -AdditionalItems @("artifacts");
-	Get-ChildItem $SolutionFolder -Recurse -File -Filter "*.*proj" | Remove-GeneratedProjectItem -AdditionalItems @("package-lock.json");
+	Get-ChildItem $SolutionFolder -Recurse -File -Filter "*.*proj" | Remove-GeneratedProjectItem;
 }
 
 Task "Import-BuildDependencies" -alias "restore" -description "This task imports all build dependencies." `
 -action {
-	# Installing all required dependencies.
 	foreach ($moduleId in $Dependencies)
 	{
 		$modulePath = Join-Path $ToolsFolder "$moduleId/*/*.psd1";
@@ -83,20 +82,18 @@ Task "Import-BuildDependencies" -alias "restore" -description "This task imports
 Task "Increment-VersionNumber" -alias "version" -description "This task increments all of the projects version number." `
 -depends @("restore") -action {
 	$manifest = $ManifestFilePath | Step-NcrementVersionNumber -Major:$Major -Minor:$Minor -Patch;
-	$manifest | ConvertTo-Json | Out-File $ManifestFilePath -Encoding utf8;
-	Exec { &git add $ManifestFilePath | Out-Null; };
+	$manifest | ConvertTo-Json | Out-File -FilePath $ManifestFilePath -Encoding utf8;
+	$newVersion = $ManifestFilePath | Select-NcrementVersionNumber;
 
-	Join-Path $SolutionFolder "src/*/*.csproj" | Get-ChildItem | Update-NcrementProjectFile $manifest -Commit:$ShouldCommitChanges `
-		| Write-FormatedMessage "  * updated '{0}' version number to '$(ConvertTo-NcrementVersionNumber $manifest | Select-Object -ExpandProperty Version)'.";
+	Join-Path $SolutionFolder "src/*/*.*proj" | Get-ChildItem | Update-NcrementProjectFile $ManifestFilePath | Split-Path -Leaf `
+		| Out-StringFormat "  * incremented '{0}' version number to '$newVersion'.";
 }
 
 Task "Build-Solution" -alias "compile" -description "This task compiles projects in the solution." `
 -action { Get-Item "$SolutionFolder/*.sln" | Invoke-MSBuild $Configuration; }
 
 Task "Run-Tests" -alias "test" -description "This task invoke all tests within the 'tests' folder." `
--action {
-	Join-Path $SolutionFolder "tests" | Get-ChildItem -Recurse -File -Filter "*MSTest.csproj" | Invoke-MSTest $Configuration;
-}
+-action { Join-Path $SolutionFolder "tests" | Get-ChildItem -Recurse -File -Filter "*MSTest.csproj" | Invoke-MSTest $Configuration; }
 
 Task "Run-Benchmarks" -alias "benchmark" -description "This task invoke all benchmark tests within the 'tests' folder." `
 -action { $projectFile = Join-Path $SolutionFolder "tests/*.Benchmark/*.*proj" | Get-Item | Invoke-BenchmarkDotNet -Filter $Filter -DryRun:$DryRun; }
