@@ -8,20 +8,20 @@
 
 	<PropertyGroup Label="Package">
 		<Title>SemverX</Title>
-		<Version>0.0.11-beta</Version>
-		<AssemblyVersion>0.0.11</AssemblyVersion>
+		<Version>0.0.19</Version>
+		<AssemblyVersion>0.0.19</AssemblyVersion>
 		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
 		<PackageTags>semantic version</PackageTags>
 
 		<Company>Ackara</Company>
 		<Authors>Ackara</Authors>
-		<Copyright>Copyright 2019 , All Rights Reserved.</Copyright>
+		<Copyright>Copyright 2019 Ackara, All Rights Reserved.</Copyright>
 
-		<PackageReleaseNotes>https://github.com//SemverX/blob/master/release-notes.md</PackageReleaseNotes>
-		<PackageIconUrl>https://raw.githubusercontent.com//SemverX/master/art/icon.png</PackageIconUrl>
-		<PackageLicenseFile>https://github.com//SemverX/blob/master/license.txt</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com//SemverX</PackageProjectUrl>
-		<RepositoryUrl>https://github.com//SemverX.git</RepositoryUrl>
+		<PackageReleaseNotes>https://github.com/Ackara/SemverX/blob/master/release-notes.md</PackageReleaseNotes>
+		<PackageIconUrl>https://raw.githubusercontent.com/Ackara/SemverX/master/art/icon.png</PackageIconUrl>
+		<PackageLicenseFile>https://github.com/Ackara/SemverX/blob/master/license.txt</PackageLicenseFile>
+		<PackageProjectUrl>https://github.com/Ackara/SemverX</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Ackara/SemverX.git</RepositoryUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
