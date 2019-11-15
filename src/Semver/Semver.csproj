@@ -1,16 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AssemblyName>Semver</AssemblyName>
 		<RootNamespace>Acklann.Semver</RootNamespace>
 		<LangVersion>7.2</LangVersion>
-	</PropertyGroup>
+	
+<PackageIconUrl>https://raw.githubusercontent.com/Ackara/Semver/master/art/icon.png</PackageIconUrl>
+</PropertyGroup>
 
 	<PropertyGroup Label="Package">
 		<Title>Semver</Title>
-		<Version>0.0.27</Version>
-		<AssemblyVersion>0.0.27</AssemblyVersion>
-		<Description>A comprehensive implementation of Semantic Version (https://semver.org).</Description>
+		<Version>0.0.10</Version>
+		<AssemblyVersion>0.0.10</AssemblyVersion>
+		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
 		<PackageTags>semantic version</PackageTags>
 
 		<Company>Ackara</Company>
@@ -41,4 +43,6 @@
 			<Visible>true</Visible>
 		</None>
 	</ItemGroup>
+
+
 </Project>
