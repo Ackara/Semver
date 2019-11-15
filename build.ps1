@@ -18,6 +18,8 @@ Param(
 	[Alias("secrets")]
 	[string]$SecretsFilePath,
 
+	[string]$Configuration = "Debug",
+
 	[Alias('no-commit')]
 	[switch]$SkipCommit,
 
@@ -27,24 +29,27 @@ Param(
 	[Alias('d', "dry")]
 	[switch]$DryRun,
 
+	[Alias('i')]
+	[switch]$NonInteractive,
+
 	[switch]$Release,
 	[switch]$Major,
 	[switch]$Minor,
 	[switch]$Force
 )
-# Validate Dependencies
+
+# Ensuring we have our Dependencies installed.
 if(-not ((&node --version) -match 'v\d+.\d+')) { throw "'nodejs' is not accessible on this machine."; }
 if(-not ((&dotnet --version) -match '\d+.\d+')) { throw "'dotnet' is not accessible on this machine."; }
 if (-not ((&git --version) -match 'git version \d+\.\d+')) { throw "'git' is not accessible on this machine."; }
 
-# Initializing required variables.
-$Configuration = "Debug";
+# Initializing our default variables.
 if (($Tasks.Length -gt 0) -and ($Tasks[0] -like "publish")) { $Configuration = "Release"; }
 if ($Release) { $Configuration = "Release"; }
 
 $SecretsFilePath = (Join-Path $PSScriptRoot "secrets.json");
 
-# Getting the current branch of source control.
+# Getting the current branch from source control.
 $branchName = ([Environment]::GetEnvironmentVariable("BUILD_SOURCEBRANCHNAME"));
 if ([string]::IsNullOrEmpty($branchName))
 {
@@ -52,7 +57,7 @@ if ([string]::IsNullOrEmpty($branchName))
 	if ($match.Success) { $branchName = $match.Groups["name"].Value; }
 }
 
-# Installing then invoking the Psake tasks.
+# Invoking the Psake tasks.
 $toolsFolder = Join-Path $PSScriptRoot "tools";
 $psakeModule = Join-Path $toolsFolder "psake/*/*.psd1";
 if (-not (Test-Path $psakeModule))
@@ -67,7 +72,7 @@ if ($Help) { Invoke-Psake -buildFile $taskFile -docs; }
 else
 {
 	Write-Host -ForegroundColor DarkGray "User:          $([Environment]::UserName)@$([Environment]::MachineName)";
-	Write-Host -ForegroundColor DarkGray "Platform:      $([Environment]::OSVersion.Platform)";
+	Write-Host -ForegroundColor DarkGray "OS:            $([Environment]::OSVersion.Platform)";
 	Write-Host -ForegroundColor DarkGray "Branch:        $branchName";
 	Write-Host -ForegroundColor DarkGray "Configuration: $Configuration";
 	Write-Host "";
@@ -82,6 +87,7 @@ else
 		"Configuration"=$Configuration;
 		"SolutionFolder"=$PSScriptRoot;
 		"SecretsFilePath"=$SecretsFilePath;
+		"Interactive"=(-not $NonInteractive.IsPresent);
 		"ShouldCommitChanges"=(-not $SkipCommit.IsPresent);
 	}
 	if (-not $psake.build_success) { exit 1; }

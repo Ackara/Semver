@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AssemblyName>Semver</AssemblyName>
@@ -7,28 +7,38 @@
 	</PropertyGroup>
 
 	<PropertyGroup Label="Package">
-		<Title>SemverX</Title>
-		<Version>0.0.24</Version>
-		<AssemblyVersion>0.0.24</AssemblyVersion>
-		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
+		<Title>Semver</Title>
+		<Version>0.0.27</Version>
+		<AssemblyVersion>0.0.27</AssemblyVersion>
+		<Description>A comprehensive implementation of Semantic Version (https://semver.org).</Description>
 		<PackageTags>semantic version</PackageTags>
 
 		<Company>Ackara</Company>
 		<Authors>Ackara</Authors>
 		<Copyright>Copyright 2019 Ackara, All Rights Reserved.</Copyright>
+		<PackageLicenseFile>license.txt</PackageLicenseFile>
 
-		<PackageReleaseNotes>https://github.com/Ackara/SemverX/blob/master/release-notes.md</PackageReleaseNotes>
-		<PackageIconUrl>https://raw.githubusercontent.com/Ackara/SemverX/master/art/icon.png</PackageIconUrl>
-		<PackageLicenseFile>https://github.com/Ackara/SemverX/blob/master/license.txt</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/Ackara/SemverX</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Ackara/SemverX.git</RepositoryUrl>
+		<PackageIcon>icon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
+		<PackageReleaseNotes>https://github.com/Ackara/Semver/blob/master/release-notes.md</PackageReleaseNotes>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Memory" Version="4.5.3" />
+	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="System.Memory" Version="4.5.3" />
+	<ItemGroup Label="Package">
+		<None Include="..\..\license.txt" Pack="True" PackagePath="">
+			<Visible>false</Visible>
+		</None>
+
+		<None Include="..\..\art\icon.png" Pack="True" PackagePath="">
+			<Visible>true</Visible>
+		</None>
 	</ItemGroup>
 </Project>

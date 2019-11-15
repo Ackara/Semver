@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semver</name>
+    </assembly>
+    <members>
+        <member name="T:Acklann.Semver.SemanticVersion">
+            <summary>
+            Represents a semantic version number as specified at https://semver.org/.
+            </summary>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.#ctor(System.UInt16,System.UInt16,System.UInt16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Acklann.Semver.SemanticVersion" /> struct.
+            </summary>
+            <param name="major">The major number.</param>
+            <param name="minor">The minor number.</param>
+            <param name="patch">The patch number.</param>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Acklann.Semver.SemanticVersion" /> struct.
+            </summary>
+            <param name="major">The major number. (should be positive)</param>
+            <param name="minor">The minor number. (should be positive)</param>
+            <param name="patch">The patch number. (should be positive)</param>
+            <param name="preRelease">The pre release.</param>
+            <param name="build">The build.</param>
+            <param name="strict"><c>true</c> if the arguments should be validated; otherwise <c>false</c>.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When <paramref name="major" />, <paramref name="minor" /> or <paramref name="patch" /> is
+            less than zero while <paramref name="strict" /> is set to true.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            When <paramref name="preRelease" /> or <paramref name="build" /> do not the valid pattern
+            (([0-9A-Za-z-]+\.?)+), while <paramref name="strict" /> is set to <c>true</c>.
+            </exception>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.Major">
+            <summary>
+            Gets the number for when you make incompatible API changes.
+            </summary>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.Minor">
+            <summary>
+            Gets the number for when you add functionality in a backwords compatible manner.
+            </summary>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.Patch">
+            <summary>
+            Gets the number for when you make backwards compatible bug fixes.
+            </summary>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.PreRelease">
+            <summary>
+            Gets the pre-release tag.
+            </summary>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.Build">
+            <summary>
+            Gets the build tag.
+            </summary>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.IsPreRelease">
+            <summary>
+            Gets a value indicating whether this instance is a pre-release.
+            </summary>
+            <value><c>true</c> if this instance is a pre-release; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Acklann.Semver.SemanticVersion.IsStable">
+            <summary>
+            Gets a value indicating whether this instance is stable.
+            </summary>
+            <value><c>true</c> if this instance is stable; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.Parse(System.String,System.Boolean)">
+            <summary>
+            Converts the string representation of a version number to its
+            <see cref="T:Acklann.Semver.SemanticVersion" /> equivalent.
+            </summary>
+            <param name="text">A string that contains a version number to convert.</param>
+            <param name="strict"><c>true</c> if the components should be validated; otherwise <c>false</c>.</param>
+            <exception cref="T:System.FormatException">When an illegal character is found.</exception>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.TryParse(System.String,System.Boolean,Acklann.Semver.SemanticVersion@)">
+            <summary>
+            Converts the string representation of a version number to its
+            <see cref="T:Acklann.Semver.SemanticVersion" /> equivalent and returns a value that indicates whether the
+            conversion succeeded.
+            </summary>
+            <param name="text">A string that contains a version number to convert.</param>
+            <param name="strict"><c>true</c> if the components should be validated; otherwise <c>false</c>.</param>
+            <param name="result">
+            The <see cref="T:Acklann.Semver.SemanticVersion" /> equivalent of to the version number contained in
+            <paramref name="text" />, if the conversion succeeds.
+            </param>
+            <returns>
+            <c>true</c> if the <paramref name="text" /> parameter was converted successfully;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.TryParse(System.String,Acklann.Semver.SemanticVersion@)">
+            <summary>
+            Converts the string representation of a version number to its
+            <see cref="T:Acklann.Semver.SemanticVersion" /> equivalent and returns a value that indicates whether the
+            conversion succeeded.
+            </summary>
+            <param name="text">A string that contains a version number to convert.</param>
+            <param name="result">
+            The <see cref="T:Acklann.Semver.SemanticVersion" /> equivalent of to the version number contained in
+            <paramref name="text" />, if the conversion succeeds.
+            </param>
+            <returns>
+            <c>true</c> if the <paramref name="text" /> parameter was converted successfully;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.IsWellFormed(System.String)">
+            <summary>
+            Determines whether the specified text can be converted to a
+            <see cref="T:Acklann.Semver.SemanticVersion" /> object.
+            </summary>
+            <param name="text">A <see cref="T:Acklann.Semver.SemanticVersion" /> string representation.</param>
+            <returns><c>true</c> if valid; otherwise, <c>false</c>.</returns>
+            <seealso cref="M:Acklann.Semver.SemanticVersion.Parse(System.String,System.Boolean)" />
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.IsWellFormed">
+            <summary>
+            Determines whether this instance adhere to the specifications outlined at https://semver.org/.
+            </summary>
+            <returns><c>true</c> if valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.NextMajor(System.Int32,System.String,System.String)">
+            <summary>
+            Returns a new <see cref="T:Acklann.Semver.SemanticVersion" /> in which the <see cref="P:Acklann.Semver.SemanticVersion.Major" /> number is
+            incremented in accordance to https://semver.org/#spec-item-8.
+            </summary>
+            <param name="value">A new major value.</param>
+            <param name="preRelease">A new pre-release value.</param>
+            <param name="build">A new build value.</param>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.NextMinor(System.Int32,System.String,System.String)">
+            <summary>
+            Returns a new <see cref="T:Acklann.Semver.SemanticVersion" /> in which the <see cref="P:Acklann.Semver.SemanticVersion.Minor" /> number is
+            incremented in accordance to https://semver.org/#spec-item-7.
+            </summary>
+            <param name="value">A new minor value.</param>
+            <param name="preRelease">A new pre-release value.</param>
+            <param name="build">A new build value.</param>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.NextPatch(System.Int32,System.String,System.String)">
+            <summary>
+            Returns a new <see cref="T:Acklann.Semver.SemanticVersion" /> in which the <see cref="P:Acklann.Semver.SemanticVersion.Patch" /> number is
+            incremented in accordance to https://semver.org/#spec-item-6.
+            </summary>
+            <param name="value">A new patch value.</param>
+            <param name="preRelease">A new pre-release value.</param>
+            <param name="build">A new build value.</param>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.ToString(System.String)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="format">A standard or custom version format string.</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="format">A standard or custom version format string.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.Equals(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether two specified <see cref="T:Acklann.Semver.SemanticVersion" /> objects have the same value.
+            </summary>
+            <param name="a">The first <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <param name="b">The second <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is the same as <paramref name="b" />; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Equality(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether two specified <see cref="T:Acklann.Semver.SemanticVersion" /> objects have the same value.
+            </summary>
+            <param name="a">The first <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <param name="b">The second <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is the same as <paramref name="b" />; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Inequality(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether two specified <see cref="T:Acklann.Semver.SemanticVersion" /> objects do not have the
+            same value.
+            </summary>
+            <param name="a">The first <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <param name="b">The second <see cref="T:Acklann.Semver.SemanticVersion" /> to compare.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is the same as <paramref name="b" />; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.Equals(Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether two specified <see cref="T:Acklann.Semver.SemanticVersion" /> objects do not have the
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            <c>true</c> if the current object is equal to the <paramref name="other">other</paramref>
+            parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+            <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures
+            like a hash table.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.Compare(Acklann.Semver.SemanticVersion@,Acklann.Semver.SemanticVersion@)">
+            <summary>
+            Determines whether one specified <see cref="T:Acklann.Semver.SemanticVersion" /> has precedence over
+            another specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="a">The first value.</param>
+            <param name="b">The second value.</param>
+            <returns>
+            -1 if this <paramref name="a" /> is lesser, 1 if greater, 0 if the same as <paramref name="b" />.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_LessThan(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether one specified <see cref="T:Acklann.Semver.SemanticVersion" /> is less than another
+            specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="a">The first value.</param>
+            <param name="b">The second value.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is less than <paramref name="b" />; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_LessThanOrEqual(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether one specified <see cref="T:Acklann.Semver.SemanticVersion" /> is less or equal to
+            another specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="a">The first value.</param>
+            <param name="b">The second value.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is less or equal to <paramref name="b" />;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_GreaterThan(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether one specified <see cref="T:Acklann.Semver.SemanticVersion" /> is greater than another
+            specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="a">The first value.</param>
+            <param name="b">The second value.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is greater than <paramref name="b" />; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_GreaterThanOrEqual(Acklann.Semver.SemanticVersion,Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether one specified <see cref="T:Acklann.Semver.SemanticVersion" /> is greater or equal to
+            another specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="a">The first value.</param>
+            <param name="b">The second value.</param>
+            <returns>
+            <c>true</c> if <paramref name="a" /> is greater or equal to <paramref name="b" />;
+            otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.CompareTo(Acklann.Semver.SemanticVersion)">
+            <summary>
+            Determines whether this instance has precedence over the specified <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="other">The other value.</param>
+            <returns>-1 if this instance is lesser, 1 if greater, 0 if the same.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Implicit(System.String)~Acklann.Semver.SemanticVersion">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.String" /> to <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="text">The text.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Implicit(Acklann.Semver.SemanticVersion)~System.String">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Acklann.Semver.SemanticVersion" /> to <see cref="T:System.String" />.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Explicit(Acklann.Semver.SemanticVersion)~System.Version">
+            <summary>
+            Performs an explicit conversion from <see cref="T:Acklann.Semver.SemanticVersion" /> to <see cref="T:System.Version" />.
+            </summary>
+            <param name="version">The version.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:Acklann.Semver.SemanticVersion.op_Explicit(System.Version)~Acklann.Semver.SemanticVersion">
+            <summary>
+            Performs an explicit conversion from <see cref="T:System.Version" /> to <see cref="T:Acklann.Semver.SemanticVersion" />.
+            </summary>
+            <param name="version">The version.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+    </members>
+</doc>
