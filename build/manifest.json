@@ -1,18 +1,21 @@
 ﻿{
-    "name":  "SemverX",
-    "version":  {
-                    "major":  0,
-                    "minor":  0,
-                    "patch":  11
-                },
-    "copyright":  "Copyright {year} {company}, All Rights Reserved.",
-    "license":  "https://github.com/{company}/{name}/blob/master/license.txt",
-    "website":  "https://github.com/{company}/{name}",
-    "repository":  "https://github.com/{company}/{name}.git",
-    "icon":  "https://raw.githubusercontent.com/{company}/{name}/master/art/icon.png",
-    "releaseNotes":  "https://github.com/{company}/{name}/blob/master/release-notes.md",
-    "branchVersionMap":  {
-                             "master":  "x.y.z-\\beta",
-                             "default":  "g"
-                         }
+  "name": "SemverX",
+  "description": "A comprehensive implementation of Semantic Version (https://semver.org/).",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 24
+  },
+  "authors": "Ackara",
+  "company": "Ackara",
+  "copyright": "Copyright {year} {company}, All Rights Reserved.",
+  "website": "https://github.com/{company}/{name}",
+  "icon": "https://raw.githubusercontent.com/{company}/{name}/master/art/icon.png",
+  "repository": "https://github.com/{company}/{name}.git",
+  "releaseNotes": "https://github.com/{company}/{name}/blob/master/release-notes.md",
+  "license": "https://github.com/{company}/{name}/blob/master/license.txt",
+  "branchVersionMap": {
+    "master": "C",
+    "default": "x.y.z-\\beta"
+  }
 }

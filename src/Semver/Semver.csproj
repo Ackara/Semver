@@ -8,8 +8,8 @@
 
 	<PropertyGroup Label="Package">
 		<Title>SemverX</Title>
-		<Version>0.0.19</Version>
-		<AssemblyVersion>0.0.19</AssemblyVersion>
+		<Version>0.0.24</Version>
+		<AssemblyVersion>0.0.24</AssemblyVersion>
 		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
 		<PackageTags>semantic version</PackageTags>
 
