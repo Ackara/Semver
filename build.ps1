@@ -18,6 +18,7 @@ Param(
 	[Alias("secrets")]
 	[string]$SecretsFilePath,
 
+	[Alias('c')]
 	[string]$Configuration = "Debug",
 
 	[Alias('no-commit')]

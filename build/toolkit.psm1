@@ -234,6 +234,32 @@ function Out-StringHeader
 	return $header;
 }
 
+function Select-Property
+{
+	Param(
+		[Alias("JPath")]
+		[ValidateNotNullOrEmpty()]
+		[Parameter(Mandatory)]
+		[string]$Path,
+
+		[ValidateNotNull()]
+		[Parameter(Mandatory, ValueFromPipeline)]
+		$InputObject
+	)
+
+	PROCESS
+	{
+		$result = $InputObject;
+		foreach ($propertyName in $Path.Split(@('.', '/', '\')))
+		{
+			try { $result = $result.$propertyName; }
+			catch { return $null; }
+		}
+
+		return $result;
+	}
+}
+
 function Write-Header
 {
 	Param([string]$Title = "", [int]$Length = 70, [System.ConsoleColor]$Color = [System.ConsoleColor]::DarkGray)
