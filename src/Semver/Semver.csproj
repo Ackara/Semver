@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AssemblyName>Acklann.Semver</AssemblyName>
@@ -8,9 +8,9 @@
 
 	<PropertyGroup Label="Package">
 		<Title>Semver</Title>
-		<Version>0.0.10</Version>
-		<AssemblyVersion>0.0.10</AssemblyVersion>
-		<Description>A comprehensive implementation of [semver2](https://semver.org/).</Description>
+		<Version>0.0.11</Version>
+		<AssemblyVersion>0.0.11</AssemblyVersion>
+		<Description>A comprehensive implementation of [Semantic Version](https://semver.org/).</Description>
 		<PackageTags>semantic version</PackageTags>
 
 		<Company>Ackara</Company>
@@ -21,7 +21,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/Ackara/Semver.git</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Ackara/Semver</PackageProjectUrl>
-		<PackageReleaseNotes>https://github.com/Ackara/Semver/blob/master/release-notes.md</PackageReleaseNotes>
+		<PackageReleaseNotes>https://github.com/Ackara/Semver/blob/master/changelog.md</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
