@@ -134,7 +134,8 @@ function New-Tag
 	Param([Parameter(Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string]$Version)
 
 	Invoke-Tool { &git tag "v$Version"; }
-	Invoke-Tool { &git push origin "v$Version"; }
+	#Invoke-Tool { &git push origin HEAD; }
+	#Invoke-Tool { &git push origin "v$Version"; }
 }
 
 function Publish-PackageToNuget
