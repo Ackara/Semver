@@ -1,18 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>Semver</AssemblyName>
+		<AssemblyName>Acklann.Semver</AssemblyName>
 		<RootNamespace>Acklann.Semver</RootNamespace>
 		<LangVersion>7.2</LangVersion>
-	
-<PackageIconUrl>https://raw.githubusercontent.com/Ackara/Semver/master/art/icon.png</PackageIconUrl>
 </PropertyGroup>
 
 	<PropertyGroup Label="Package">
 		<Title>Semver</Title>
 		<Version>0.0.10</Version>
 		<AssemblyVersion>0.0.10</AssemblyVersion>
-		<Description>A comprehensive implementation of Semantic Version (https://semver.org/).</Description>
+		<Description>A comprehensive implementation of [semver2](https://semver.org/).</Description>
 		<PackageTags>semantic version</PackageTags>
 
 		<Company>Ackara</Company>
@@ -26,10 +24,6 @@
 		<PackageReleaseNotes>https://github.com/Ackara/Semver/blob/master/release-notes.md</PackageReleaseNotes>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="System.Memory" Version="4.5.3" />
-	</ItemGroup>
-
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
@@ -40,7 +34,7 @@
 		</None>
 
 		<None Include="..\..\art\icon.png" Pack="True" PackagePath="">
-			<Visible>true</Visible>
+			<Visible>false</Visible>
 		</None>
 	</ItemGroup>
 

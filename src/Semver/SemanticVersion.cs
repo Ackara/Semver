@@ -28,12 +28,12 @@ namespace Acklann.Semver
 		/// <param name="build">The build.</param>
 		/// <param name="strict"><c>true</c> if the arguments should be validated; otherwise <c>false</c>.</param>
 		/// <exception cref="ArgumentOutOfRangeException">
-		/// When <paramref name="major" />, <paramref name="minor" /> or <paramref name="patch" /> is
-		/// less than zero while <paramref name="strict" /> is set to true.
+		/// When <paramref name="major" />, <paramref name="minor" /> or <paramref name="patch" />
+		/// is less than zero while <paramref name="strict" /> is set to true.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		/// When <paramref name="preRelease" /> or <paramref name="build" /> do not the valid pattern
-		/// (([0-9A-Za-z-]+\.?)+), while <paramref name="strict" /> is set to <c>true</c>.
+		/// When <paramref name="preRelease" /> or <paramref name="build" /> do not the valid
+		/// pattern (([0-9A-Za-z-]+\.?)+), while <paramref name="strict" /> is set to <c>true</c>.
 		/// </exception>
 		public SemanticVersion(int major, int minor, int patch, string preRelease, string build = null, bool strict = false)
 		{
@@ -326,8 +326,8 @@ namespace Acklann.Semver
 		/// </summary>
 		/// <param name="other">An object to compare with this object.</param>
 		/// <returns>
-		/// <c>true</c> if the current object is equal to the <paramref name="other">other</paramref>
-		/// parameter; otherwise, false.
+		/// <c>true</c> if the current object is equal to the
+		/// <paramref name="other">other</paramref> parameter; otherwise, false.
 		/// </returns>
 		public bool Equals(SemanticVersion other) => Equals(this, other);
 
@@ -348,8 +348,8 @@ namespace Acklann.Semver
 		/// Returns a hash code for this instance.
 		/// </summary>
 		/// <returns>
-		/// A hash code for this instance, suitable for use in hashing algorithms and data structures
-		/// like a hash table.
+		/// A hash code for this instance, suitable for use in hashing algorithms and data
+		/// structures like a hash table.
 		/// </returns>
 		public override int GetHashCode()
 		{

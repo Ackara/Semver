@@ -57,6 +57,7 @@ Task "Package Solution" -alias "pack" -description "This task generates all depl
 	{
 		Write-Header "dotnet: pack '$($proj.BaseName)-$version'";
 		Exec { &dotnet pack $proj.FullName --output $ArtifactsFolder --configuration "Release" /p:PackageVersion=$version; }
+		Join-Path $proj.DirectoryName "*.xml" | Resolve-Path | Remove-Item;
 	}
 }
 
